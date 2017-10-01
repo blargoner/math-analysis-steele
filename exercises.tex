@@ -1,0 +1,75 @@
+% Notes and exercises from The Cauchy-Schwarz Master Class by Steele
+% By John Peloquin
+\documentclass[letterpaper,12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,enumitem,fourier}
+
+\newcommand{\CS}{Cauchy-Schwarz}
+
+\newcommand{\Biglp}[1]{\Bigl({#1}\Bigr)}
+\newcommand{\abs}[1]{|{#1}|}
+\newcommand{\Biglabs}[1]{\Bigl|{#1}\Bigr|}
+
+% Theorems
+\theoremstyle{definition}
+\newtheorem*{exer}{Exercise}
+
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+
+% Meta
+\title{Notes and exercises from\\\textit{The Cauchy-Schwarz Master Class}}
+\author{John Peloquin}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+This document contains notes and exercises from~\cite{steele}.
+
+\section*{Chapter~1}
+\begin{exer}[1.1]
+For any real numbers \(r_1,\ldots,r_n\),
+\[\sum_k r_k\le\sqrt{n}\,\Biglp{\sum_k r_k^2}^{1/2}\]
+and
+\[\sum_k r_k\le\Biglp{\sum_k\abs{r_k}^{2/3}}^{1/2}\Biglp{\sum_k\abs{r_k}^{4/3}}^{1/2}\]
+\end{exer}
+\begin{proof}
+Both inequalities are obtained from \CS, the first by taking \(a_k=1\) and \(b_k=r_k\) for all~\(k\) and the second by taking \(a_k=r_k^{1/3}\) and \(b_k=r_k^{2/3}\) for all~\(k\), recalling that \(r^2=\abs{r}^2\) for any real number~\(r\).
+\end{proof}
+
+\begin{exer}[1.2]
+Suppose \(p_k\ge 0\) for \(1\le k\le n\) and \(p_1+\cdots+p_n=1\). If \(a_k\ge 0\), \(b_k\ge 0\), and \(1\le a_kb_k\) for \(1\le k\le n\), then
+\[1\le\Biglp{\sum_k p_ka_k}\Biglp{\sum_k p_kb_k}\]
+\end{exer}
+\begin{proof}
+\(1\le\sqrt{a_kb_k}\), so \(p_k\le p_k\sqrt{a_kb_k}=\sqrt{p_ka_k\vphantom{b_k}}\sqrt{p_kb_k}\). By \CS,
+\[1=\sum_k p_k\le\sum_k(p_ka_k)^{1/2}(p_kb_k)^{1/2}\le\Biglp{\sum_k p_ka_k}^{1/2}\Biglp{\sum_k p_kb_k}^{1/2}\]
+The result now follows from squaring both sides of the outer inequality.
+\end{proof}
+
+\begin{exer}[1.3]
+For any real sequences \((a_k),(b_k),(c_k)\) of length~\(n\),
+\[\Biglp{\sum_k a_kb_kc_k}^4\le\Biglp{\sum_k a_k^2}^2\sum_k b_k^4\sum_k c_k^4\tag{a}\]
+and
+\[\Biglp{\sum_k a_kb_kc_k}^2\le\sum_k a_k^2\sum_k b_k^2\sum_k c_k^2\tag{b}\]
+\end{exer}
+\begin{proof}
+By \CS,
+\[\Biglabs{\sum_k a_kb_kc_k}\le\Biglp{\sum_k a_k^2}^{1/2}\Biglp{\sum_k b_k^2c_k^2}^{1/2}\]
+so
+\[\Biglp{\sum_k a_kb_kc_k}^2\le\Biglp{\sum_k a_k^2}\Biglp{\sum_k b_k^2c_k^2}\tag{c}\]
+By \CS\ again,
+\[\sum_k b_k^2c_k^2\le\Biglp{\sum_k b_k^4}^{1/2}\Biglp{\sum_k c_k^4}^{1/2}\]
+which together with~(c) implies
+\[\Biglp{\sum_k a_kb_kc_k}^2\le\Biglp{\sum_k a_k^2}\Biglp{\sum_k b_k^4}^{1/2}\Biglp{\sum_k c_k^4}^{1/2}\]
+which implies~(a). Also, clearly
+\[\sum_k b_k^2c_k^2\le\Biglp{\sum_k b_k^2}\Biglp{\sum_k c_k^2}\]
+which together with~(c) implies~(b).
+\end{proof}
+
+% References
+\begin{thebibliography}{0}
+\bibitem{steele} Steele, J.~Michael. \textit{The Cauchy-Schwarz Master Class.} Cambridge, 2004.
+\end{thebibliography}
+\end{document}
