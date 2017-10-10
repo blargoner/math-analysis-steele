@@ -5,9 +5,16 @@
 
 \newcommand{\CS}{Cauchy-Schwarz}
 
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\mult}{\cdot}
+\newcommand{\dx}{\,dx}
+
 \newcommand{\Biglp}[1]{\Bigl({#1}\Bigr)}
 \newcommand{\abs}[1]{|{#1}|}
 \newcommand{\Biglabs}[1]{\Bigl|{#1}\Bigr|}
+\newcommand{\innerprod}[2]{\langle{#1},{#2}\rangle}
+\newcommand{\norm}[1]{\lVert{#1}\rVert}
 
 % Theorems
 \theoremstyle{definition}
@@ -112,6 +119,41 @@ so
 and by applying Exercise~1.1(a) to the last sum,
 \[\frac{(n^2+1)^2}{n}\le\sum_k\left(p_k+\frac{1}{p_k}\right)^2\tag{b}\]
 which is just the desired inequality. If equality holds in~(b), then equality holds in~(a), so \(p_k=1/n\) for all~\(k\) by~(1.11); the converse is trivial.
+\end{proof}
+
+\begin{exer}[1.7]
+For any real numbers \(\alpha,\beta,x,y\),
+\[(5\alpha x+\alpha y+\beta x+3\beta y)^2\le(5\alpha^2+2\alpha\beta+3\beta^2)(5x^2+2xy+3y^2)\]
+\end{exer}
+\begin{proof}
+In~\(\R^2\), the product
+\[\innerprod{(x_1,y_1)}{(x_2,y_2)}=5x_1x_2+x_1y_2+x_2y_1+3y_1y_2\]
+is clearly symmetric and bilinear. Moreover,
+\[\norm{(x,y)}^2=\innerprod{(x,y)}{(x,y)}=5x^2+2xy+3y^2\]
+Fixing~\(y\) and considering the quadratic polynomial \(p(x)=5x^2+(2y)x+3y^2\), note \(p(x)\ge 0\) since \(5>0\) and \((2y)^2-4\mult 5\mult 3y^2=-56y^2\le 0\), and in fact \(p(x)=0\) if and only if \(x=y=0\). Therefore the product is positive definite and so an inner product. The desired inequality is now just
+\[\innerprod{(\alpha,\beta)}{(x,y)}^2\le\norm{(\alpha,\beta)}^2\norm{(x,y)}^2\]
+which is \CS~(1.16).
+\end{proof}
+
+\begin{exer}[1.8]
+The following inequalities hold:
+\begin{align*}
+\sum_{k=0}^{\infty}a_k x^k&\le\frac{1}{\sqrt{1-x^2}}\,\Biglp{\sum_{k=0}^{\infty}a_k^2}^{1/2}&&(0\le x<1)\tag{a}\\
+\sum_{k=1}^n\frac{a_k}{k}&<\sqrt{2}\,\Biglp{\sum_{k=0}^n a_k^2}^{1/2}&&\tag{b}\\
+\sum_{k=1}^n\frac{a_k}{\sqrt{n+k}}&<(\log{2})^{1/2}\Biglp{\sum_{k=0}^n a_k^2}^{1/2}&&\tag{c}\\
+\sum_{k=0}^n\binom{n}{k}a_k&\le\binom{2n}{n}^{1/2}\Biglp{\sum_{k=0}^n a_k^2}^{1/2}&&\tag{d}
+\end{align*}
+\end{exer}
+\begin{proof}
+The inequalities all follow from \CS, together with suitable bounds for~\(\sum_k b_k^2\).
+For~(a), note \(0\le x^2<1\), so \(\sum_k (x^k)^2=\sum_k (x^2)^k=(1-x^2)^{-1}\) by convergence of the geometric series. For~(b), recall
+\[\sum_{k=1}^n\frac{1}{k^2}<\sum_{k=1}^{\infty}\frac{1}{k^2}=\frac{\pi^2}{6}<2\]
+For~(c), note
+\[\sum_{k=1}^n\frac{1}{n+k}<\int_n^{2n}\frac{1}{x}\dx=\log(2n)-\log(n)=\log(2n/n)=\log(2)\]
+For~(d), recall for any \(0\le m\le n\),
+\[\binom{n}{k}=\sum_{j=0}^k\binom{m}{j}\binom{n-m}{k-j}\]
+so
+\[\binom{2n}{n}=\sum_{k=0}^n\binom{n}{k}\binom{n}{n-k}=\sum_{k=0}^n\binom{n}{k}^2\qedhere\]
 \end{proof}
 
 % References
